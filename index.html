@@ -158,8 +158,12 @@
         alt="Description of your image"      
       >
       <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
+        Comparison between REPA and our Representation Entanglement for Generation (REG).
+        (a) During training, REPA indirectly aligns the intermediate denoising features of SiT with pretrained foundation model representations during training.
+        (b) The external alignment of REPA is absent during actual denoising inference, limiting the effectiveness of discriminative information.
+        (c) REG entangles low-level image latents with a pretrained foundation model's class token in training, providing discriminative semantic guidance to SiT. 
+        (d) REG's inference process jointly reconstructs both image latents and their associated global semantics from random noise initialization. The incorporated semantic knowledge continues to guide generation, actively enhancing image quality during inference.
+        (e) On ImageNet 256$\times$256, SiT-XL/2 + REG achieves substantial acceleration in convergence, training <b>63</b>&times; and <b>23</b>&times; faster than SiT-XL/2 and SiT-XL/2 + REPA, respectively.
     </div>
   </div>
 </section>
@@ -173,12 +177,12 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            REPA and its variants effectively mitigate training challenges in diffusion models by incorporating external visual representations from pretrained models, through alignment between the noisy hidden projections of denoising networks and foundational clean image representations. We argue that the external alignment, which is absent during the entire denoising inference process, falls short of fully harnessing the potential of discriminative representations. In this work, we propose a straightforward method called \textit{\textbf{R}epresentation \textbf{E}ntanglement for \textbf{G}eneration} (\textbf{REG}), which entangles low-level image latents with a single high-level class token from pretrained foundation models for denoising. 
+            REPA and its variants effectively mitigate training challenges in diffusion models by incorporating external visual representations from pretrained models, through alignment between the noisy hidden projections of denoising networks and foundational clean image representations. We argue that the external alignment, which is absent during the entire denoising inference process, falls short of fully harnessing the potential of discriminative representations. In this work, we propose a straightforward method called <i><b>R</b>epresentation <b>E</b>ntanglement for <b>G</b>eneration</i> (<b>REG</b>), which entangles low-level image latents with a single high-level class token from pretrained foundation models for denoising. 
             REG acquires the capability to produce coherent image-class pairs directly from pure noise, substantially improving both generation quality and training efficiency.
-            This is accomplished with negligible additional inference overhead, requiring only one single additional token for denoising (<0.5\% increase in FLOPs and latency).
+            This is accomplished with negligible additional inference overhead, requiring only one single additional token for denoising (&lt;0.5% increase in FLOPs and latency).
             The inference process concurrently reconstructs both image latents and their corresponding global semantics, where the acquired semantic knowledge actively guides and enhances the image generation process.
-            On ImageNet 256$\times$256, SiT-XL/2 + REG demonstrates remarkable convergence acceleration, achieving $\textbf{63}\times$ and $\textbf{23}\times$ faster training than SiT-XL/2 and SiT-XL/2 + REPA, respectively. 
-            More impressively, SiT-L/2 + REG trained for merely 400K iterations outperforms SiT-XL/2 + REPA trained for 4M iterations ($\textbf{10}\times$ longer).
+            On ImageNet 256&times;256, SiT-XL/2 + REG demonstrates remarkable convergence acceleration, achieving <b>63</b>&times; and <b>23</b>&times; faster training than SiT-XL/2 and SiT-XL/2 + REPA, respectively. 
+            More impressively, SiT-L/2 + REG trained for merely 400K iterations outperforms SiT-XL/2 + REPA trained for 4M iterations (<b>10</b>&times; longer).
           </p>
         </div>
       </div>
@@ -187,27 +191,24 @@
 </section>
 <!-- End paper abstract -->
 
-<!-- Paper abstract -->
+<!-- Paper contributions -->
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
+        <h2 class="title is-3">contributions</h2>
         <div class="content has-text-justified">
-          <p>
-            REPA and its variants effectively mitigate training challenges in diffusion models by incorporating external visual representations from pretrained models, through alignment between the noisy hidden projections of denoising networks and foundational clean image representations. We argue that the external alignment, which is absent during the entire denoising inference process, falls short of fully harnessing the potential of discriminative representations. In this work, we propose a straightforward method called <b>R<b>epresentation </b>E</b>ntanglement for <b></b>G<b></b>eneration (<b></b>REG<b></b>), which entangles low-level image latents with a single high-level class token from pretrained foundation models for denoising. 
-            REG acquires the capability to produce coherent image-class pairs directly from pure noise, substantially improving both generation quality and training efficiency.
-            This is accomplished with negligible additional inference overhead, requiring only one single additional token for denoising (<0.5\% increase in FLOPs and latency).
-            The inference process concurrently reconstructs both image latents and their corresponding global semantics, where the acquired semantic knowledge actively guides and enhances the image generation process.
-            On ImageNet 256×256, SiT-XL/2 + REG demonstrates remarkable convergence acceleration, achieving <b>63<b>× and <b>23<b>× faster training than SiT-XL/2 and SiT-XL/2 + REPA, respectively. 
-            More impressively, SiT-L/2 + REG trained for merely 400K iterations outperforms SiT-XL/2 + REPA trained for 4M iterations (<b>10<b></b>× longer).
-          </p>
+          <ul>
+            <li>We propose <b>REG</b>, an efficient framework that entangles low-level image latents with a single high-level class token from pretrained foundation models for denoising.</li>
+            <li>REG significantly enhances generation quality, training convergence speed, and discriminative semantic learning while introducing negligible computational overhead.</li>
+            <li>On ImageNet generation benchmarks, REG achieves <b>63</b>&times; and <b>23</b>&times; faster training convergence than SiT and REPA.</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End paper abstract -->
+<!-- End paper contributions -->
 
 <!-- Image carousel -->
 <section class="hero is-small">
@@ -218,35 +219,35 @@
         <!-- Your image here -->
         <img src="static/images/castle_01.jpg" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
-          First image description.
+          The visualization results of the class label is "Castle" 
         </h2>
       </div>
       <div class="item">
         <!-- Your image here -->
         <img src="static/images/bubble_01.jpg" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
-          Second image description.
+          The visualization results of the class label is "Bubble" 
         </h2>
       </div>
       <div class="item">
         <!-- Your image here -->
         <img src="static/images/dog1_01.jpg" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
-         Third image description.
+          The visualization results of the class label is "Border collie" 
        </h2>
      </div>
      <div class="item">
       <!-- Your image here -->
       <img src="static/images/cabinet_01.jpg" alt="MY ALT TEXT"/>
       <h2 class="subtitle has-text-centered">
-        Fourth image description.
+        The visualization results of the class label is "China cabinet" 
       </h2>
     </div>
     <div class="item">
       <!-- Your image here -->
       <img src="static/images/great_grey_owl_01.jpg" alt="MY ALT TEXT"/>
       <h2 class="subtitle has-text-centered">
-        Fifth image description.
+        The visualization results of the class label is "Great grey owl" 
       </h2>
     </div>
   </div>
