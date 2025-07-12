@@ -187,6 +187,27 @@
 </section>
 <!-- End paper abstract -->
 
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            REPA and its variants effectively mitigate training challenges in diffusion models by incorporating external visual representations from pretrained models, through alignment between the noisy hidden projections of denoising networks and foundational clean image representations. We argue that the external alignment, which is absent during the entire denoising inference process, falls short of fully harnessing the potential of discriminative representations. In this work, we propose a straightforward method called <b>R<b>epresentation </b>E</b>ntanglement for <b></b>G<b></b>eneration (<b></b>REG<b></b>), which entangles low-level image latents with a single high-level class token from pretrained foundation models for denoising. 
+            REG acquires the capability to produce coherent image-class pairs directly from pure noise, substantially improving both generation quality and training efficiency.
+            This is accomplished with negligible additional inference overhead, requiring only one single additional token for denoising (<0.5\% increase in FLOPs and latency).
+            The inference process concurrently reconstructs both image latents and their corresponding global semantics, where the acquired semantic knowledge actively guides and enhances the image generation process.
+            On ImageNet 256×256, SiT-XL/2 + REG demonstrates remarkable convergence acceleration, achieving <b>63<b>× and <b>23<b>× faster training than SiT-XL/2 and SiT-XL/2 + REPA, respectively. 
+            More impressively, SiT-L/2 + REG trained for merely 400K iterations outperforms SiT-XL/2 + REPA trained for 4M iterations (<b>10<b></b>× longer).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
 
 <!-- Image carousel -->
 <section class="hero is-small">
@@ -233,29 +254,6 @@
 </div>
 </section>
 <!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End youtube video -->
 
 
 <!-- Video carousel -->
