@@ -25,7 +25,6 @@
 
 
   <title>Representation Entanglement for Generation: Training Diffusion Transformers Is Much Easier Than You Think </title>
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
 
@@ -157,13 +156,17 @@
         src="static/images/reg_final.jpg"  
         alt="Description of your image"      
       >
-      <h2 class="subtitle has-text-centered">
-        Comparison between REPA and our Representation Entanglement for Generation (REG).
-        (a) During training, REPA indirectly aligns the intermediate denoising features of SiT with pretrained foundation model representations during training.
-        (b) The external alignment of REPA is absent during actual denoising inference, limiting the effectiveness of discriminative information.
-        (c) REG entangles low-level image latents with a pretrained foundation model's class token in training, providing discriminative semantic guidance to SiT. 
-        (d) REG's inference process jointly reconstructs both image latents and their associated global semantics from random noise initialization. The incorporated semantic knowledge continues to guide generation, actively enhancing image quality during inference.
-        (e) On ImageNet 256$\times$256, SiT-XL/2 + REG achieves substantial acceleration in convergence, training <b>63</b>&times; and <b>23</b>&times; faster than SiT-XL/2 and SiT-XL/2 + REPA, respectively.
+      <h2 class="subtitle has-text-centered"></h2>
+      <div class="content has-text-justified">
+        <p>
+          Figure 1. Comparison between REPA and our Representation Entanglement for Generation (REG).
+          (a) During training, REPA indirectly aligns the intermediate denoising features of SiT with pretrained foundation model representations during training.
+          (b) The external alignment of REPA is absent during actual denoising inference, limiting the effectiveness of discriminative information.
+          (c) REG entangles low-level image latents with a pretrained foundation model's class token in training, providing discriminative semantic guidance to SiT. 
+          (d) REG's inference process jointly reconstructs both image latents and their associated global semantics from random noise initialization. The incorporated semantic knowledge continues to guide generation, actively enhancing image quality during inference.
+          (e) On ImageNet 256&times;256, SiT-XL/2 + REG achieves substantial acceleration in convergence, training <b>63</b>&times; and <b>23</b>&times; faster than SiT-XL/2 and SiT-XL/2 + REPA, respectively.
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -196,7 +199,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">contributions</h2>
+        <h2 class="title is-3">Contributions</h2>
         <div class="content has-text-justified">
           <ul>
             <li>We propose <b>REG</b>, an efficient framework that entangles low-level image latents with a single high-level class token from pretrained foundation models for denoising.</li>
@@ -209,6 +212,61 @@
   </div>
 </section>
 <!-- End paper contributions -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">A Quick Overview of Experimental Results</h2>
+        <div class="content has-text-left is-size-5">
+        <strong>Accelerating training convergence</strong>
+        </div>
+        <figure>
+        <img src="static/images/table1.png" alt="fail" width="60%"">
+        <figcaption class="content has-text-left" style="word-break:normal">
+          <i>Table 1. <b>FID comparison across training iterations for accelerated alignment methods.</b> All experiments are conducted on ImageNet 256&times;256 without classifier-free guidance (CFG).</i>
+        </figcaption>
+        </figure>
+        <br>
+        <div class="content has-text-left is-size-5">
+          <strong>Comparison with SOTA methods</strong>
+        </div>
+        <figure>
+          <img src="static/images/table2.png" alt="fail" width="80%"">
+          <figcaption class="content has-text-left" style="word-break:normal">
+            <i>Table 2. <b>Comparison of the performance of different methods on ImageNet 256&times;256 with CFG.</b>
+              Performance metrics are annotated with <span class="arrow">&uarr;</span> (higher is better) 
+              and <span class="arrow">&darr;</span> (lower is better).</i> 
+          </figcaption>
+          </figure>
+        <br>
+        <div class="content has-text-left is-size-5">
+          <strong>Partial ablation studies</strong>
+        </div>
+        <figure>
+          <img src="static/images/table3.png" alt="fail" width="100%"">
+          <figcaption class="content has-text-left" style="word-break:normal">
+            <i>Table 3. Domain generalization experiments of three baselines with and without our ATPrompt on 4 datasets. Our method achieves
+            consistent average performance improvement over three baseline methods.</i>
+          </figcaption>
+        </figure>
+        <br>
+        <div class="content has-text-left is-size-5">
+          <strong>Analysis of discriminative semantic</strong>
+        </div>
+        <figure>
+          <img src="static/images/fig_cknna.jpg" alt="fail" width="100%"">
+          <figcaption class="content has-text-left" style="word-break:normal">
+            <i>Figure 2. (a) Correlation between CKNNA and FID across training steps (color-coded by progression). REG demonstrates superior discriminative semantic learning, achieving higher CKNNA scores alongside lower FID values compared to REPA.
+              (b) Layer-wise CKNNA progression at 400K training steps (t=0.5). REG consistently enhances CKNNA across all network layers, indicating robust discriminative semantics learning.
+              (c) Timestep-wise CKNNA variation at 400K training. REG improves semantic alignment uniformly throughout the training process, outperforming baselines at all timesteps.</i> 
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Image carousel -->
 <section class="hero is-small">
@@ -255,60 +313,6 @@
 </div>
 </section>
 <!-- End image carousel -->
-
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/regfinal.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
-<!--End paper poster -->
-
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
